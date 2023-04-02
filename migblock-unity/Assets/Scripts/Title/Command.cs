@@ -18,7 +18,16 @@ public static class Command {
 
             case "exit": {
 
+                console.Logf("Exiting.. Thank you and goodbye.");
                 Application.Quit();
+
+            break; }
+
+            case "fps": {
+
+                console.Log("Frame Rate: ");
+                console.Log((1 / Time.smoothDeltaTime).ToString("0"));
+                console.Logf(" FPS.");
 
             break; }
 
