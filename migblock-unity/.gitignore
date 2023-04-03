@@ -60,8 +60,4 @@ crashlytics-build.properties
 
 
 # Migblock Files
-cache
-Skins
-Worlds
-Servers
-data
+mcil

@@ -1,0 +1,4 @@
+
+implement failsafe thing for when the minecrtaft layer crashes or is disconnected
+
+implement on quit function for minecraft layer so it doesnt die
