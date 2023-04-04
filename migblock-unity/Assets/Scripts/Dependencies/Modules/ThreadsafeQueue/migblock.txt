@@ -1,0 +1,6 @@
+
+i made this FOR this project, its just in here cos i cant think of
+any other place in the project files to put it
+
+its just a simple implementation of System.Collections.Generic.Queue<T>
+that is thread safe, check it out, its pretty sick!
