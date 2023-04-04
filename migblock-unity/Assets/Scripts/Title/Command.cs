@@ -13,6 +13,8 @@ public static class Command {
 
                 console.Logf("To launch the Game, try the following:");
                 console.Logf("start <USERNAME> <IPA> <PORT> <MC_VERSION>");
+                console.Logf("or for hard coded values:");
+                console.Logf("start default");
 
             break; }
 
@@ -33,62 +35,76 @@ public static class Command {
 
             case "start": {
 
-                // if (args.Length != 5) {
-                //
-                //     console.Logf("start: Invalid arguments! Run help for usage.");
-                //
-                // break; }
+                if (args.Length != 5 && args.Length != 2) {
 
-                // console.Logf("<color=red>Exception</color>! Not implemented!");
+                    console.Logf("start: Invalid arguments! Run help for usage.");
 
-                MinecraftInterfaceLayer.Start(new MinecraftSessionInformation{
+                break; }
 
-                    serverAddress = "localhost",
-                    serverPort = 25565,
-                    serverVersion = "1.12.2",
+                if (args[1] == "default") {
 
-                    username = "steve",
-                });
+                    GameRuntimeValues.sessionInformation = new MinecraftSessionInformation{
 
-                console.Logf("MinecraftInterfaceLayer.Start() called...");
+                        serverAddress = "localhost",
+                        serverPort = 25565,
+                        serverVersion = "1.12.2",
 
-            break; }
+                        username = "steve",
+                    };
 
-            case "stop": {
+                } else {
 
-                MinecraftInterfaceLayer.Stop();
+                    GameRuntimeValues.sessionInformation = new MinecraftSessionInformation{
 
-                console.Logf("MinecraftInterfaceLayer.Stop() called...");
+                        serverAddress = args[2],
+                        serverPort = int.Parse(args[3]),
+                        serverVersion = args[4],
 
-            break; }
-
-            case "read": {
-
-                while (MinecraftInterfaceLayer.outputQueue.Size() != 0) {
-
-                    console.Logf(MinecraftInterfaceLayer.outputQueue.Dequeue());
+                        username = args[1],
+                    };
                 }
 
-            break; }
+                console.Logf("<color=cyan>starting Game</color>...");
 
-            case "write": {
-
-                if (args.Length < 2) return;
-
-                string val = args[1];
-                for (int i = 2; i < args.Length; ++i)
-                    val += " " + args[i];
-
-                MinecraftInterfaceLayer.inputQueue.Enqueue(val);
+                UnityEngine.SceneManagement.SceneManager.LoadScene("Game");
 
             break; }
 
-            case "stats": {
+            // case "stop": {
+            //
+            //     MinecraftInterfaceLayer.Stop();
+            //
+            //     console.Logf("MinecraftInterfaceLayer.Stop() called...");
+            //
+            // break; }
 
-                console.Logf($"read count: {MinecraftInterfaceLayer.outputQueue.Size().ToString()}");
-                console.Logf($"write count: {MinecraftInterfaceLayer.inputQueue.Size().ToString()}");
-
-            break; }
+            // case "read": {
+            //
+            //     while (MinecraftInterfaceLayer.outputQueue.Size() != 0) {
+            //
+            //         console.Logf(MinecraftInterfaceLayer.outputQueue.Dequeue());
+            //     }
+            //
+            // break; }
+            //
+            // case "write": {
+            //
+            //     if (args.Length < 2) return;
+            //
+            //     string val = args[1];
+            //     for (int i = 2; i < args.Length; ++i)
+            //         val += " " + args[i];
+            //
+            //     MinecraftInterfaceLayer.inputQueue.Enqueue(val);
+            //
+            // break; }
+            //
+            // case "stats": {
+            //
+            //     console.Logf($"read count: {MinecraftInterfaceLayer.outputQueue.Size().ToString()}");
+            //     console.Logf($"write count: {MinecraftInterfaceLayer.inputQueue.Size().ToString()}");
+            //
+            // break; }
 
             default: {
 
