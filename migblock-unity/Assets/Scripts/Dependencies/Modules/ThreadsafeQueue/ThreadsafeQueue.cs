@@ -38,4 +38,6 @@ public class ThreadsafeQueue<T> {
 
         } finally { mutex.ReleaseMutex(); }
     }
+
+    public int Count => Size();
 }
