@@ -1,0 +1,5 @@
+
+this is a collection of simple scripts to make setting things up in unity
+way easier, i made it in 2022, id recommend putting it in ur project to
+https://github.com/harroo/UtilityBat
+it makes things so mcuh easier
