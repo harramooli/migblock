@@ -96,11 +96,11 @@ public class DynamicLightManager : MonoBehaviour {
             }
             RenderSettings.ambientIntensity = subZeroDarknessLevel;
 
-            FindObjectOfType<Welkien>().sky = subZeroColor;
-            FindObjectOfType<Welkien>().ground = subZeroColor;
-            // foreach (var cam in camerasToSync)
-            //     cam.backgroundColor = subZeroColor;
-            // RenderSettingsfogColor = subZeroColor;
+            // FindObjectOfType<Welkien>().sky = subZeroColor;
+            // FindObjectOfType<Welkien>().ground = subZeroColor;
+            foreach (var cam in camerasToSync)
+                cam.backgroundColor = subZeroColor;
+            RenderSettings.fogColor = subZeroColor;
 
             noLightSim = false;
 
@@ -124,11 +124,11 @@ public class DynamicLightManager : MonoBehaviour {
                 RenderSettings.ambientIntensity
                     = depth / maxLightLevel * 0.82f + minUndergroundLightLevel;
 
-                FindObjectOfType<Welkien>().sky = subZeroColor;
-                FindObjectOfType<Welkien>().ground = subZeroColor;
-                // foreach (var cam in camerasToSync)
-                //     cam.backgroundColor = ambientColor;
-                // RenderSettings.fogColor = ambientColor;
+                // FindObjectOfType<Welkien>().sky = subZeroColor;
+                // FindObjectOfType<Welkien>().ground = subZeroColor;
+                foreach (var cam in camerasToSync)
+                    cam.backgroundColor = ambientColor;
+                RenderSettings.fogColor = ambientColor;
 
                 noLightSim = depth > 0.56f;
 
@@ -142,11 +142,11 @@ public class DynamicLightManager : MonoBehaviour {
                 RenderSettings.ambientIntensity
                     = ambientLevel / maxLightLevel * 0.82f + minSunlightLevel;
 
-                FindObjectOfType<Welkien>().sky = subZeroColor;
-                FindObjectOfType<Welkien>().ground = subZeroColor;
-                // foreach (var cam in camerasToSync)
-                //     cam.backgroundColor = ambientColor;
-                // RenderSettingsfogColor = ambientColor;
+                // FindObjectOfType<Welkien>().sky = subZeroColor;
+                // FindObjectOfType<Welkien>().ground = subZeroColor;
+                foreach (var cam in camerasToSync)
+                    cam.backgroundColor = ambientColor;
+                RenderSettings.fogColor = ambientColor;
 
                 noLightSim = ambientLevel > 0.56f;
             }
