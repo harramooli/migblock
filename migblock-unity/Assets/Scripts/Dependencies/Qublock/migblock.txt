@@ -1,0 +1,8 @@
+
+qublock is a voxel engine, more at https://github.com/harroo/Qublock
+
+this is downloaded from my old github account github.com/harroo/qublock
+
+i write qublock in 2022, i have imported it into this project and changed some
+things so that it will work well with this project, in future i might replace
+the voxel engine with a custom one for migblock, but for now this works well
