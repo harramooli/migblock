@@ -2,6 +2,7 @@
 to get started:
 
 cd minecraft-interface-layer
+npm install
 ./build.sh
 
 then u can open unity project and get started
@@ -9,14 +10,18 @@ then u can open unity project and get started
 
 usage:
 
-start: starts the connection
+to start, type help and u will see how to join a world
 
-read: prints the read queue and clears it
+or use start default for default value (also seen in help)
 
-write: writes all args to the interface layer
 
-stats: prints info abt read and write queues for teh layer
+then we join the world, and u can see the events happening in the
+debug console in unity
 
-stop: stops the connection
-    MUST BE USED TO STOP BEFORE EXIT
-    no on quit handling setup yet!
+working on adding more events, and getting chunks to render in unity after loaded
+
+
+
+
+DESC:
+minecraft client focusing on minimalism and stability and performance

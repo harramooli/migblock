@@ -16,6 +16,7 @@ fi
 echo "building node project..."
 
 pkg src/main.js -o ./build/mcil
+ls -lh ./build/
 
 echo "coping compiled binary..."
 

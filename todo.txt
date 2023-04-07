@@ -1,4 +1,31 @@
 
 implement failsafe thing for when the minecrtaft layer crashes or is disconnected
+    see mineflayer.events.kicked and error and stuff
 
-implement on quit function for minecraft layer so it doesnt die
+
+add all events to the jslayer, maybe create another file for it, see manilla for how
+to implement this, and yea use another file for events, events.js or something
+
+create loglayer for minecraft interface, log all recv from mcil.stdout
+use this for logging to test if any async issues accur:
+    spawn\n-21chunkLo2ad3\nas\n
+probably wont happen like that, but a log should be created to test/debug/see anyway
+
+
+
+
+
+
+
+
+
+
+
+way in teh future:
+prismarineJS/chunk contains light data...
+    maybe this can be used to render lighting?
+        without even having to calc it ourselves?
+            wow...
+                starts in 1.14, so we can use it from there
+                    finish all versions completely first tho
+                    then update, i think thats a good way to go
