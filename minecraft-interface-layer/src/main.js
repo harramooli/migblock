@@ -50,6 +50,12 @@ bot.on('chunkColumnLoad', (point) => {
     process.stdout.write(`chunkLoad\n${point.x}\n${point.z}\n${blockData.toString()}\n`);
 });
 
+bot.on('chunkColumnUnload', (point) => {
+
+    process.stdout.write(`chunkUnload\n${point.x}\n${point.z}\n`);
+});
+
+//todo: create event handler for this
 process.stdin.on('data', (data) => {
 
     data = data.toString();

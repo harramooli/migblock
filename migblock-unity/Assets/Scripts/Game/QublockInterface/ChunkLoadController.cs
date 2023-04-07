@@ -15,14 +15,11 @@ public static class ChunkLoadController {
         chunkX = chunkX >> 4; chunkZ = chunkZ >> 4;
 
         //if not already loaded, load it
-        if (!chunkCache.Contains(new ChunkLoc(chunkX, 0, chunkZ))) {
+        // if (!chunkCache.Contains(new ChunkLoc(chunkX, 0, chunkZ))) {
+        if (!World.ChunkLoaded(new ChunkLoc(chunkX, 0, chunkZ))) {
 
             for (int y = 0; y < 4; ++y)
                 World.CreateChunk(new ChunkLoc(chunkX, y, chunkZ));
-
-                //add to cache list?
-                //doesnt matter right now, add this later
-                //trying to get it to work for now
         }
 
         //then update it
@@ -52,5 +49,11 @@ public static class ChunkLoadController {
 
     public static void OnChunkUnload (int chunkX, int chunkZ) {
 
+        chunkX = chunkX >> 4; chunkZ = chunkZ >> 4;
+
+        if (!World.ChunkLoaded(new ChunkLoc(chunkX, 0, chunkZ))) return;
+
+        for (int y = 0; y < 4; ++y)
+            World.DestroyChunk(new ChunkLoc(chunkX, y, chunkZ));
     }
 }

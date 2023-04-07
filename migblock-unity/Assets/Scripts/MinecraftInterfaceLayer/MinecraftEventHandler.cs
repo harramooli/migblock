@@ -52,6 +52,15 @@ public class MinecraftEventHandler : MonoBehaviour {
                     // Debug.Log(values.Length + " length");
 
                 break; }
+
+                case "chunkUnload": {
+
+                    int chunkX = int.Parse(MinecraftInterfaceLayer.outputQueue.Dequeue());
+                    int chunkZ = int.Parse(MinecraftInterfaceLayer.outputQueue.Dequeue());
+
+                    ChunkLoadController.OnChunkUnload(chunkX, chunkZ);
+
+                break; }
             }
         }
     }
