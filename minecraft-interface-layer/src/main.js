@@ -37,21 +37,17 @@ bot.on('chunkColumnLoad', (point) => {
     let chunk = bot.world.getColumnAt(point);
 
     let blockData = [];
-    for (let x = 0; x < 16; ++x)
-        for (let y = 0; y < 256; ++y)
-            for (let z = 0; z < 16; ++z)
-                blockData.push(chunk.getBlockType(new Vec3(x, y, z)));
+    for (let i = 0; i < 4; ++i)
+        for (let x = 0; x < 16; ++x)
+            for (let y = i * 64; y < (i + 1) * 64; ++y)
+            // for (let y = 0; y < 64; ++y)
+                for (let z = 0; z < 16; ++z)
+                    blockData.push(chunk.getBlockType(new Vec3(x, y, z)));
 
     blockData = blockTable.anvilToQublock(blockData);
     blockData = runLengthEncoding.encode(blockData);
 
     process.stdout.write(`chunkLoad\n${point.x}\n${point.z}\n${blockData.toString()}\n`);
-
-    // console.log(
-        //         blockData.length,
-        //         runLengthEncoding.encode(blockData).length,
-        //         runLengthEncoding.decode(runLengthEncoding.encode(blockData)).length
-        // );
 });
 
 process.stdin.on('data', (data) => {

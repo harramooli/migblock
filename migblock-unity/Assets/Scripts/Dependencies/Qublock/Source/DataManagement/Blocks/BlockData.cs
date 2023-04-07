@@ -19,6 +19,8 @@ public class BlockData {
     public virtual bool Flamable => false;
     public virtual bool Solid => true;
     public virtual bool Selectable => true;
+    public virtual bool CanBePlacedOn => false;
+    public virtual bool Extendable => true;
 
     public virtual MeshUVSet UVSet => new MeshUVSet {
         PX_X = 0,

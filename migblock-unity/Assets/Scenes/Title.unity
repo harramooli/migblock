@@ -133,6 +133,8 @@ GameObject:
   m_Component:
   - component: {fileID: 876258769}
   - component: {fileID: 876258770}
+  - component: {fileID: 876258771}
+  - component: {fileID: 876258772}
   m_Layer: 0
   m_Name: Script Object
   m_TagString: Untagged
@@ -169,6 +171,32 @@ MonoBehaviour:
   text: {fileID: 1817629282}
   inputField: {fileID: 877190977}
   inputValue: 
+--- !u!114 &876258771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 876258768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 906dd34da8596681893df6d0109dddbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &876258772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 876258768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8306c6cd5641c351093ea2529c34ccd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  width: 860
+  height: 480
 --- !u!1 &877190975
 GameObject:
   m_ObjectHideFlags: 0

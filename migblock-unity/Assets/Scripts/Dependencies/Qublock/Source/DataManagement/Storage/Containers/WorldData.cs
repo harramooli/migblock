@@ -18,7 +18,7 @@ namespace Qublock.Data.Storage.Containers {
 
                 if (chunks.ContainsKey(ChunkLoc.FromWorldPos(x, y, z)))
                     return chunks[ChunkLoc.FromWorldPos(x, y, z)]
-                        [x & 0x1F, y & 0x1F, z & 0x1F];
+                        [x & 0xF, y & 0x3F, z & 0xF];
 
                 return 1;
             }
@@ -26,7 +26,7 @@ namespace Qublock.Data.Storage.Containers {
             set {
 
                 chunks[ChunkLoc.FromWorldPos(x, y, z)]
-                    [x & 0x1F, y & 0x1F, z & 0x1F] = value;
+                    [x & 0xF, y & 0x3F, z & 0xF] = value;
             }
         }
     }

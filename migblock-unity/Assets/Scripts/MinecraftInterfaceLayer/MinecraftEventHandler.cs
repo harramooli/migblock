@@ -17,6 +17,8 @@ public class MinecraftEventHandler : MonoBehaviour {
 
                     Debug.Log("spawned! location: " + x + " " + y + " " + z);
 
+                    Camera.main.gameObject.transform.position = new Vector3(x, y, z);
+
                 break; }
 
                 case "chat": {
@@ -30,8 +32,8 @@ public class MinecraftEventHandler : MonoBehaviour {
 
                 case "chunkLoad": {
 
-                    System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
-                    sw.Start();
+                    // System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
+                    // sw.Start();
 
                     int chunkX = int.Parse(MinecraftInterfaceLayer.outputQueue.Dequeue());
                     int chunkZ = int.Parse(MinecraftInterfaceLayer.outputQueue.Dequeue());
@@ -43,9 +45,11 @@ public class MinecraftEventHandler : MonoBehaviour {
                     for (int i = 0; i < blocks.Length; ++i)
                         values[i] = ushort.Parse(blocks[i]);
 
-                    sw.Stop(); Debug.Log(sw.ElapsedMilliseconds + "ms");
+                    ChunkLoadController.OnChunkLoad(chunkX, chunkZ, values);
 
-                    Debug.Log(values.Length + " length");
+                    // sw.Stop(); Debug.Log(sw.ElapsedMilliseconds + "ms");
+                    //
+                    // Debug.Log(values.Length + " length");
 
                 break; }
             }
