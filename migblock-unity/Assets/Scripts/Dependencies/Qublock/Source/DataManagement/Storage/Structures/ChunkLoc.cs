@@ -17,7 +17,7 @@ namespace Qublock.Data.Storage.Structures {
 
         public static ChunkLoc FromWorldPos (int x, int y, int z) {
 
-            return new ChunkLoc (x >> 5, y >> 5, z >> 5);
+            return new ChunkLoc (x >> 4, y >> 6, z >> 4);
         }
 
         #region Equality members

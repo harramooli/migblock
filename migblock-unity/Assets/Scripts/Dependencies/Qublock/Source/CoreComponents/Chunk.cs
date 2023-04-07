@@ -14,18 +14,18 @@ namespace Qublock.Core {
 
     public class Chunk {
 
-        private ushort[] values = new ushort[32 * 32 * 32];
+        private ushort[] values = new ushort[16 * 64 * 16];
 
         public ushort this[int x, int y, int z] {
 
             get {
 
-                return values[x * 32 * 32 + y * 32 + z];
+                return values[x * 16 * 64 + y * 16 + z];
             }
 
     	    set {
 
-        		values[x * 32 * 32 + y * 32 + z] = value;
+        		values[x * 16 * 64 + y * 16 + z] = value;
     	    }
         }
 
@@ -55,7 +55,7 @@ namespace Qublock.Core {
         public Chunk (ChunkLoc loc, Material material, Material fadeMaterial) {
 
             location = loc;
-            position = new GridPos(loc.X * 32, loc.Y * 32, loc.Z * 32);
+            position = new GridPos(loc.X * 16, loc.Y * 64, loc.Z * 16);
 
             // chunkObject = new GameObject();
             // chunkObject = new GameObject("Chunk " + loc.X + ":" + loc.Y + ":" + loc.Z);
@@ -175,11 +175,11 @@ namespace Qublock.Core {
 
     		    Clear();
 
-    		    for (int x = 0; x < 32; ++x) {
+    		    for (int x = 0; x < 16; ++x) {
 
-    		        for (int y = 0; y < 32; ++y) {
+    		        for (int y = 0; y < 64; ++y) {
 
-    		            for (int z = 0; z < 32; ++z) {
+    		            for (int z = 0; z < 16; ++z) {
 
     		                Argosy.Get(this[x, y, z]).Draw(this, x, y, z);
     		            }
@@ -218,7 +218,7 @@ namespace Qublock.Core {
 
         public bool IsSolid (int x, int y, int z) {
 
-            if (x >= 0 && x < 32 && y >= 0 && y < 32 && z >= 0 && z < 32) {
+            if (x >= 0 && x < 16 && y >= 0 && y < 64 && z >= 0 && z < 16) {
 
                 return Argosy.Get(this[x, y, z]).Solid;
 
@@ -230,7 +230,7 @@ namespace Qublock.Core {
 
         public bool IsId (int x, int y, int z, int id) {
 
-            if (x >= 0 && x < 32 && y >= 0 && y < 32 && z >= 0 && z < 32) {
+            if (x >= 0 && x < 16 && y >= 0 && y < 64 && z >= 0 && z < 16) {
 
                 return this[x, y, z] == id;
 

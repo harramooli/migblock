@@ -25,25 +25,25 @@ public class OriginSync : MonoBehaviour {
 
     private void Update () {
 
-        while (transform.position.x > 32)
-            Recenter(new Vector3(-32, 0, 0));
+        while (transform.position.x > 16)
+            Recenter(new Vector3(-16, 0, 0));
 
-        while (transform.position.x < -32)
-            Recenter(new Vector3(32, 0, 0));
-
-
-        while (transform.position.y > 32)
-            Recenter(new Vector3(0, -32, 0));
-
-        while (transform.position.y < -32)
-            Recenter(new Vector3(0, 32, 0));
+        while (transform.position.x < -16)
+            Recenter(new Vector3(16, 0, 0));
 
 
-        while (transform.position.z > 32)
-            Recenter(new Vector3(0, 0, -32));
+        while (transform.position.y > 64)
+            Recenter(new Vector3(0, -64, 0));
 
-        while (transform.position.z < -32)
-            Recenter(new Vector3(0, 0, 32));
+        while (transform.position.y < -64)
+            Recenter(new Vector3(0, 64, 0));
+
+
+        while (transform.position.z > 16)
+            Recenter(new Vector3(0, 0, -16));
+
+        while (transform.position.z < -16)
+            Recenter(new Vector3(0, 0, 16));
     }
 
     private CharacterController controller;
@@ -76,7 +76,7 @@ public class OriginSync : MonoBehaviour {
 
             ts.position += newOffset;
         }
-        
+
         Origin.AddToOffset(newOffset);
     }
 }

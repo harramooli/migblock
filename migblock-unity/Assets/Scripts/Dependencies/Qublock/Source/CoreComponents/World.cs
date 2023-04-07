@@ -102,14 +102,14 @@ namespace Qublock.Core {
 
             RenderChunk(ChunkLoc.FromWorldPos(x, y, z));
 
-            if ((x & 0x1F) == 31) RenderChunk(ChunkLoc.FromWorldPos(x + 1, y, z));
-            if ((x & 0x1F) ==  0) RenderChunk(ChunkLoc.FromWorldPos(x - 1, y, z));
+            if ((x & 0xF) == 31) RenderChunk(ChunkLoc.FromWorldPos(x + 1, y, z));
+            if ((x & 0xF) ==  0) RenderChunk(ChunkLoc.FromWorldPos(x - 1, y, z));
 
-            if ((y & 0x1F) == 31) RenderChunk(ChunkLoc.FromWorldPos(x, y + 1, z));
-            if ((y & 0x1F) ==  0) RenderChunk(ChunkLoc.FromWorldPos(x, y - 1, z));
+            if ((y & 0x3F) == 31) RenderChunk(ChunkLoc.FromWorldPos(x, y + 1, z));
+            if ((y & 0x3F) ==  0) RenderChunk(ChunkLoc.FromWorldPos(x, y - 1, z));
 
-            if ((z & 0x1F) == 31) RenderChunk(ChunkLoc.FromWorldPos(x, y, z + 1));
-            if ((z & 0x1F) ==  0) RenderChunk(ChunkLoc.FromWorldPos(x, y, z - 1));
+            if ((z & 0xF) == 31) RenderChunk(ChunkLoc.FromWorldPos(x, y, z + 1));
+            if ((z & 0xF) ==  0) RenderChunk(ChunkLoc.FromWorldPos(x, y, z - 1));
         }
     }
 }

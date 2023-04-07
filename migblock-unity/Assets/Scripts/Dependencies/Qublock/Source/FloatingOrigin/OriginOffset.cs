@@ -15,9 +15,9 @@ namespace Qublock.FloatingOrigin {
             worldY += (int)newOffset.y;
             worldZ += (int)newOffset.z;
 
-            chunkX = worldX >> 5;
-            chunkY = worldY >> 5;
-            chunkZ = worldZ >> 5;
+            chunkX = worldX >> 4;
+            chunkY = worldY >> 6;
+            chunkZ = worldZ >> 4;
         }
 
         public static void ResetOffset () {
