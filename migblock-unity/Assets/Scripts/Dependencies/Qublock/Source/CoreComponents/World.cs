@@ -86,7 +86,7 @@ namespace Qublock.Core {
 
             // This should send a message to the server or something of the likes.
             // However, here we shall simply edit the "server" directly.
-            Qublock.Data.Managers.ChunkManager.SetWorldValue(x, y, z, id);
+            // Qublock.Data.Managers.ChunkManager.SetWorldValue(x, y, z, id);
         }
 
         // To be called by a Network-Manager of some sort when a block is edited say by another player.

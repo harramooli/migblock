@@ -41,14 +41,6 @@ namespace Qublock.Core {
     		valuesSet = true;
     	}
 
-        public ChunkData GetChunkData ()
-            => new ChunkData(values);
-
-        public void SetChunkData (ChunkData chunkData) {
-
-            values = chunkData.GetValues();
-        }
-
     	public bool Contains (ushort blockId)
             => Array.IndexOf(values, blockId) > -1;
 
