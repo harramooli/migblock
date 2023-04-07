@@ -11,8 +11,6 @@ if (process.argv.length != 6) {
     process.exit(-1);
 }
 
-// for (let val of process.argv) console.log(val);
-
 const bot = mineflayer.createBot({
 
     host: process.argv[2],
@@ -20,6 +18,7 @@ const bot = mineflayer.createBot({
     username: process.argv[4],
     version: process.argv[5]
 });
+
 
 bot.on('chat', (username, message) => {
 
@@ -53,6 +52,17 @@ bot.on('chunkColumnLoad', (point) => {
 bot.on('chunkColumnUnload', (point) => {
 
     process.stdout.write(`chunkUnload\n${point.x}\n${point.z}\n`);
+});
+
+bot.on('blockUpdate', (oldBlock, newBlock) => {
+
+    let packet = 'blockUpdate\n';
+    packet += `${newBlock.position.x}\n`;
+    packet += `${newBlock.position.y}\n`;
+    packet += `${newBlock.position.z}\n`;
+    packet += `${blockTable.anvilIdToQublockId(newBlock.type)}\n`;
+
+    process.stdout.write(packet);
 });
 
 //todo: create event handler for this

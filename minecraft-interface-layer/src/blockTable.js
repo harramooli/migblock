@@ -17,25 +17,29 @@
 
 module.exports.anvilToQublock = function (anvilData) {
 
-    // console.log(anvilData[0]);
-
     let qublockData = [];
 
     for (let i = 0; i < anvilData.length; ++i) {
+
+        qublockData.push(anvilIdToQublockId(anvilData[i]));
+    }
+
+    return qublockData;
+}
+
+module.exports.anvilIdToQublockId = anvilIdToQublockId;
+
+function anvilIdToQublockId (anvilId) {
+
+    switch (anvilId) {
 
         //NOW, using names is very slow, so instead we use ids
         //this just means there is more coding to do for version
         //changes, but it means faster runtime, so its better
 
-        switch (anvilData[i]) {
+        /* AIR -> AIR */ case 0: return 0;
 
-            // case 'air': qublockData.push(0); break;
-            case 0: qublockData.push(0); break;
-            default: qublockData.push(1); break;
-        }
+        //unknown? >> for now, solid
+        default: return 1;
     }
-
-    // console.log(qublockData[0]);
-
-    return qublockData;
 }

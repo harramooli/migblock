@@ -61,6 +61,19 @@ public class MinecraftEventHandler : MonoBehaviour {
                     ChunkLoadController.OnChunkUnload(chunkX, chunkZ);
 
                 break; }
+
+                case "blockUpdate": {
+
+                    int x = int.Parse(MinecraftInterfaceLayer.outputQueue.Dequeue());
+                    int y = int.Parse(MinecraftInterfaceLayer.outputQueue.Dequeue());
+                    int z = int.Parse(MinecraftInterfaceLayer.outputQueue.Dequeue());
+                    ushort id = ushort.Parse(MinecraftInterfaceLayer.outputQueue.Dequeue());
+
+                    Debug.Log("block update! " + x + " " + y + " " + z + " " + id);
+
+                    Qublock.Core.World.ChangeBlock(x, y, z, id);
+
+                break; }
             }
         }
     }
