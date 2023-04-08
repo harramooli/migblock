@@ -22,8 +22,8 @@ public class MinecraftEventHandler : MonoBehaviour {
                     Debug.Log("spawned! location: " + x + " " + y + " " + z + " " + yaw + " " + pitch);
 
                     // swap x and z to invert minecraft to qublock matrix
-                    Camera.main.gameObject.transform.position = new Vector3(z, y, x);
-                    Camera.main.gameObject.transform.eulerAngles = new Vector3(
+                    PlayerRef.transform.position = new Vector3(z, y, x);
+                    PlayerRef.head.eulerAngles = new Vector3(
                         -( (180/Mathf.PI) * pitch), -( (180/Mathf.PI) * yaw), 0
                     ); //convert minecraft radians to unity degrees, and adjust matrixes with inversion
 
@@ -95,7 +95,7 @@ public class MinecraftEventHandler : MonoBehaviour {
                     // Debug.Log("position update! " + x + " " + y + " " + z);
 
                     // swap x and z to invert minecraft to qublock matrix
-                    Camera.main.gameObject.transform.position = Origin.OffsetToUnity(new Vector3(z, y, x));
+                    PlayerRef.transform.position = Origin.OffsetToUnity(new Vector3(z, y, x));
 
                 break; }
             }

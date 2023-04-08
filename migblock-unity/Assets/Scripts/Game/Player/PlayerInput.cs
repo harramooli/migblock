@@ -6,6 +6,8 @@ public class PlayerInput : MonoBehaviour {
     public float sensitivity = 6.0f;
     private float pitchCache, pitch, yawCache, yaw, timer;
 
+    public Transform head;
+
     private void Update () {
 
         if (Input.GetKeyDown(KeyCode.Return)) {
@@ -55,15 +57,15 @@ public class PlayerInput : MonoBehaviour {
         pitch -= sensitivity * Input.GetAxis("Mouse Y");
         pitch = Mathf.Clamp(pitch, -90.0f, 90.0f);
 
-        Camera.main.gameObject.transform.eulerAngles = new Vector3(pitch, yaw, 0);
+        head.eulerAngles = new Vector3(pitch, yaw, 0);
 
         if (timer < 0) { timer = 0.1f;
 
-            if (pitchCache != pitch || yawCache != yaw) {
+            // if (pitchCache != pitch || yawCache != yaw) {
 
                 //convert unity degrees to minecraft radians, and adjust matrixes with inversion
                 MinecraftInterfaceLayer.inputQueue.Enqueue($"look {-dtr(90+yaw)} {-dtr(pitch)}");
-            }
+            // }
 
         } else timer -= Time.deltaTime;
 
