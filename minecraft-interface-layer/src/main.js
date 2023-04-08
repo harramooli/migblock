@@ -27,8 +27,10 @@ bot.on('chat', (username, message) => {
 
 bot.on('spawn', () => {
 
-    let position = bot.entity.position;
-    process.stdout.write(`spawn\n${position.x}\n${position.y}\n${position.z}\n`);
+    let pos = bot.entity.position;
+    let yaw = bot.entity.yaw;
+    let pitch = bot.entity.pitch;
+    process.stdout.write(`spawn\n${pos.x}\n${pos.y}\n${pos.z}\n${yaw}\n${pitch}\n`);
 });
 
 bot.on('chunkColumnLoad', (point) => {
@@ -65,9 +67,40 @@ bot.on('blockUpdate', (oldBlock, newBlock) => {
     process.stdout.write(packet);
 });
 
+bot.on('move', () => {
+
+    let packet = 'move\n';
+    packet += `${bot.entity.position.x}\n`;
+    packet += `${bot.entity.position.y}\n`;
+    packet += `${bot.entity.position.z}\n`;
+
+    process.stdout.write(packet);
+});
+
 //todo: create event handler for this
 process.stdin.on('data', (data) => {
 
-    data = data.toString();
-    bot.chat(data);
+    data = data.toString().slice(0, -1).split(' ');
+
+    switch (data[0]) {
+
+        case 'keyUp': case 'keyDown': {
+
+            switch (data[1]) {
+
+                case 'W': bot.setControlState('forward', data[0] != 'keyUp'); break;
+                case 'A': bot.setControlState('left', data[0] != 'keyUp'); break;
+                case 'S': bot.setControlState('back', data[0] != 'keyUp'); break;
+                case 'D': bot.setControlState('right', data[0] != 'keyUp'); break;
+                case 'Space': bot.setControlState('jump', data[0] != 'keyUp'); break;
+            }
+
+        break; }
+
+        case 'look': {
+
+            bot.look(parseFloat(data[1]), parseFloat(data[2]));
+
+        break; }
+    }
 });

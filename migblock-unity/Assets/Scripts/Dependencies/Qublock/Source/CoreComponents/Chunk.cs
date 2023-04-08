@@ -16,7 +16,8 @@ namespace Qublock.Core {
 
         private ushort[] values = new ushort[16 * 64 * 16];
 
-        public ushort this[int x, int y, int z] {
+        // swap x and z to invert minecraft to qublock matrix
+        public ushort this[int z, int y, int x] {
 
             get {
 

@@ -1,6 +1,8 @@
 
 using UnityEngine;
 
+using Qublock.FloatingOrigin;
+
 public class MinecraftEventHandler : MonoBehaviour {
 
     private void Update () {
@@ -14,10 +16,16 @@ public class MinecraftEventHandler : MonoBehaviour {
                     float x = float.Parse(MinecraftInterfaceLayer.outputQueue.Dequeue());
                     float y = float.Parse(MinecraftInterfaceLayer.outputQueue.Dequeue());
                     float z = float.Parse(MinecraftInterfaceLayer.outputQueue.Dequeue());
+                    float yaw = float.Parse(MinecraftInterfaceLayer.outputQueue.Dequeue());
+                    float pitch = float.Parse(MinecraftInterfaceLayer.outputQueue.Dequeue());
 
-                    Debug.Log("spawned! location: " + x + " " + y + " " + z);
+                    Debug.Log("spawned! location: " + x + " " + y + " " + z + " " + yaw + " " + pitch);
 
-                    Camera.main.gameObject.transform.position = new Vector3(x, y, z);
+                    // swap x and z to invert minecraft to qublock matrix
+                    Camera.main.gameObject.transform.position = new Vector3(z, y, x);
+                    Camera.main.gameObject.transform.eulerAngles = new Vector3(
+                        -( (180/Mathf.PI) * pitch), -( (180/Mathf.PI) * yaw), 0
+                    ); //convert minecraft radians to unity degrees, and adjust matrixes with inversion
 
                 break; }
 
@@ -45,7 +53,8 @@ public class MinecraftEventHandler : MonoBehaviour {
                     for (int i = 0; i < blocks.Length; ++i)
                         values[i] = ushort.Parse(blocks[i]);
 
-                    ChunkLoadController.OnChunkLoad(chunkX, chunkZ, values);
+                    // swap x and z to invert minecraft to qublock matrix
+                    ChunkLoadController.OnChunkLoad(chunkZ, chunkX, values);
 
                     // sw.Stop(); Debug.Log(sw.ElapsedMilliseconds + "ms");
                     //
@@ -58,7 +67,8 @@ public class MinecraftEventHandler : MonoBehaviour {
                     int chunkX = int.Parse(MinecraftInterfaceLayer.outputQueue.Dequeue());
                     int chunkZ = int.Parse(MinecraftInterfaceLayer.outputQueue.Dequeue());
 
-                    ChunkLoadController.OnChunkUnload(chunkX, chunkZ);
+                    // swap x and z to invert minecraft to qublock matrix
+                    ChunkLoadController.OnChunkUnload(chunkZ, chunkX);
 
                 break; }
 
@@ -71,7 +81,21 @@ public class MinecraftEventHandler : MonoBehaviour {
 
                     Debug.Log("block update! " + x + " " + y + " " + z + " " + id);
 
-                    Qublock.Core.World.ChangeBlock(x, y, z, id);
+                    // swap x and z to invert minecraft to qublock matrix
+                    Qublock.Core.World.ChangeBlock(z, y, x, id);
+
+                break; }
+
+                case "move": {
+
+                    float x = float.Parse(MinecraftInterfaceLayer.outputQueue.Dequeue());
+                    float y = float.Parse(MinecraftInterfaceLayer.outputQueue.Dequeue());
+                    float z = float.Parse(MinecraftInterfaceLayer.outputQueue.Dequeue());
+
+                    // Debug.Log("position update! " + x + " " + y + " " + z);
+
+                    // swap x and z to invert minecraft to qublock matrix
+                    Camera.main.gameObject.transform.position = Origin.OffsetToUnity(new Vector3(z, y, x));
 
                 break; }
             }
