@@ -32,11 +32,13 @@ public static class MinecraftInterfaceLayer {
         minecraftInterface.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
 		minecraftInterface.StartInfo.Arguments = processArguments;
         minecraftInterface.StartInfo.RedirectStandardOutput = true;
+        minecraftInterface.StartInfo.RedirectStandardError = true;
         minecraftInterface.StartInfo.RedirectStandardInput = true;
 
         minecraftInterface.Start();
 
         new Thread(()=>OutputReadLoop(minecraftInterface.StandardOutput)).Start();
+        new Thread(()=>ErrputReadLoop(minecraftInterface.StandardError)).Start();
         new Thread(()=>InputWriteLoop(minecraftInterface.StandardInput)).Start();
 
         running = true;
@@ -62,6 +64,20 @@ public static class MinecraftInterfaceLayer {
         }
 
         UnityEngine.Debug.Log("read.exit!");
+    }
+
+    public static ThreadsafeQueue<string> errputQueue = new ThreadsafeQueue<string>();
+
+    private static void ErrputReadLoop (StreamReader interfaceErrput) {
+
+        // while (!interfaceOutput.EndOfStream) {
+        while (running) {
+
+            string line = interfaceErrput.ReadLine();
+            errputQueue.Enqueue(line);
+        }
+
+        UnityEngine.Debug.Log("read.err.exit!");
     }
 
     public static ThreadsafeQueue<string> inputQueue = new ThreadsafeQueue<string>();

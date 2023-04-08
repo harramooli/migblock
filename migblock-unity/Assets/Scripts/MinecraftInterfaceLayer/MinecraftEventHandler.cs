@@ -7,6 +7,11 @@ public class MinecraftEventHandler : MonoBehaviour {
 
     private void Update () {
 
+        StdEvent(); ErrEvent();
+    }
+
+    private void StdEvent () {
+
         if (MinecraftInterfaceLayer.outputQueue.Count != 0) {
 
             switch (MinecraftInterfaceLayer.outputQueue.Dequeue()) {
@@ -38,14 +43,50 @@ public class MinecraftEventHandler : MonoBehaviour {
 
                 break; }
 
+                case "blockUpdate": {
+
+                    int x = int.Parse(MinecraftInterfaceLayer.outputQueue.Dequeue());
+                    int y = int.Parse(MinecraftInterfaceLayer.outputQueue.Dequeue());
+                    int z = int.Parse(MinecraftInterfaceLayer.outputQueue.Dequeue());
+                    ushort id = ushort.Parse(MinecraftInterfaceLayer.outputQueue.Dequeue());
+
+                    // Debug.Log("block update! " + x + " " + y + " " + z + " " + id);
+
+                    // swap x and z to invert minecraft to qublock matrix
+                    try { Qublock.Core.World.ChangeBlock(z, y, x, id); } catch {}
+
+                break; }
+
+                case "move": {
+
+                    float x = float.Parse(MinecraftInterfaceLayer.outputQueue.Dequeue());
+                    float y = float.Parse(MinecraftInterfaceLayer.outputQueue.Dequeue());
+                    float z = float.Parse(MinecraftInterfaceLayer.outputQueue.Dequeue());
+
+                    // Debug.Log("position update! " + x + " " + y + " " + z);
+
+                    // swap x and z to invert minecraft to qublock matrix
+                    PlayerRef.transform.position = Origin.OffsetToUnity(new Vector3(z, y, x));
+
+                break; }
+            }
+        }
+    }
+
+    private void ErrEvent () {
+
+        if (MinecraftInterfaceLayer.errputQueue.Count != 0) {
+
+            switch (MinecraftInterfaceLayer.errputQueue.Dequeue()) {
+
                 case "chunkLoad": {
 
                     // System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
                     // sw.Start();
 
-                    int chunkX = int.Parse(MinecraftInterfaceLayer.outputQueue.Dequeue());
-                    int chunkZ = int.Parse(MinecraftInterfaceLayer.outputQueue.Dequeue());
-                    string chunkData = MinecraftInterfaceLayer.outputQueue.Dequeue();
+                    int chunkX = int.Parse(MinecraftInterfaceLayer.errputQueue.Dequeue());
+                    int chunkZ = int.Parse(MinecraftInterfaceLayer.errputQueue.Dequeue());
+                    string chunkData = MinecraftInterfaceLayer.errputQueue.Dequeue();
 
                     string[] blocks = chunkData.Split(',');
                     ushort[] values = new ushort[blocks.Length];
@@ -64,38 +105,11 @@ public class MinecraftEventHandler : MonoBehaviour {
 
                 case "chunkUnload": {
 
-                    int chunkX = int.Parse(MinecraftInterfaceLayer.outputQueue.Dequeue());
-                    int chunkZ = int.Parse(MinecraftInterfaceLayer.outputQueue.Dequeue());
+                    int chunkX = int.Parse(MinecraftInterfaceLayer.errputQueue.Dequeue());
+                    int chunkZ = int.Parse(MinecraftInterfaceLayer.errputQueue.Dequeue());
 
                     // swap x and z to invert minecraft to qublock matrix
                     ChunkLoadController.OnChunkUnload(chunkZ, chunkX);
-
-                break; }
-
-                case "blockUpdate": {
-
-                    int x = int.Parse(MinecraftInterfaceLayer.outputQueue.Dequeue());
-                    int y = int.Parse(MinecraftInterfaceLayer.outputQueue.Dequeue());
-                    int z = int.Parse(MinecraftInterfaceLayer.outputQueue.Dequeue());
-                    ushort id = ushort.Parse(MinecraftInterfaceLayer.outputQueue.Dequeue());
-
-                    Debug.Log("block update! " + x + " " + y + " " + z + " " + id);
-
-                    // swap x and z to invert minecraft to qublock matrix
-                    Qublock.Core.World.ChangeBlock(z, y, x, id);
-
-                break; }
-
-                case "move": {
-
-                    float x = float.Parse(MinecraftInterfaceLayer.outputQueue.Dequeue());
-                    float y = float.Parse(MinecraftInterfaceLayer.outputQueue.Dequeue());
-                    float z = float.Parse(MinecraftInterfaceLayer.outputQueue.Dequeue());
-
-                    // Debug.Log("position update! " + x + " " + y + " " + z);
-
-                    // swap x and z to invert minecraft to qublock matrix
-                    PlayerRef.transform.position = Origin.OffsetToUnity(new Vector3(z, y, x));
 
                 break; }
             }

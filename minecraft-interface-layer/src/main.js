@@ -48,12 +48,12 @@ bot.on('chunkColumnLoad', (point) => {
     blockData = blockTable.anvilToQublock(blockData);
     blockData = runLengthEncoding.encode(blockData);
 
-    process.stdout.write(`chunkLoad\n${point.x}\n${point.z}\n${blockData.toString()}\n`);
+    process.stderr.write(`chunkLoad\n${point.x}\n${point.z}\n${blockData.toString()}\n`);
 });
 
 bot.on('chunkColumnUnload', (point) => {
 
-    process.stdout.write(`chunkUnload\n${point.x}\n${point.z}\n`);
+    process.stderr.write(`chunkUnload\n${point.x}\n${point.z}\n`);
 });
 
 bot.on('blockUpdate', (oldBlock, newBlock) => {
