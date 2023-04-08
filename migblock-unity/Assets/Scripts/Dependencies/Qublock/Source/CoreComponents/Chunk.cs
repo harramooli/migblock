@@ -92,6 +92,7 @@ namespace Qublock.Core {
         public List<Vector3> visuVertices = new List<Vector3>();
         public List<int> visuTriangles = new List<int>();
         public List<Vector2> visuUVs = new List<Vector2>();
+        public List<Color> visuColors = new List<Color>();
 
         public List<Vector3> collVertices = new List<Vector3>();
         public List<int> collTriangles = new List<int>();
@@ -99,6 +100,7 @@ namespace Qublock.Core {
         public List<Vector3> fadeVertices = new List<Vector3>();
         public List<int> fadeTriangles = new List<int>();
         public List<Vector2> fadeUVs = new List<Vector2>();
+        public List<Color> fadeColors = new List<Color>();
 
         public void CalculateTriangles () {
 
@@ -135,6 +137,7 @@ namespace Qublock.Core {
             visuVertices.Clear();
             visuTriangles.Clear();
             visuUVs.Clear();
+            visuColors.Clear();
 
             collVertices.Clear();
             collTriangles.Clear();
@@ -142,6 +145,7 @@ namespace Qublock.Core {
             fadeVertices.Clear();
             fadeTriangles.Clear();
             fadeUVs.Clear();
+            fadeColors.Clear();
         }
 
         public void Erase () {
@@ -188,8 +192,9 @@ namespace Qublock.Core {
 
     		    visuMesh.Clear();
     		    visuMesh.vertices = visuVertices.ToArray();
-    		    visuMesh.triangles = visuTriangles.ToArray();
-    		    visuMesh.uv = visuUVs.ToArray();
+                visuMesh.triangles = visuTriangles.ToArray();
+                visuMesh.uv = visuUVs.ToArray();
+    		    visuMesh.colors = visuColors.ToArray();
     		    visuMesh.RecalculateNormals();
 
     		    collMesh.Clear();
@@ -201,6 +206,7 @@ namespace Qublock.Core {
                 fadeMesh.vertices = fadeVertices.ToArray();
                 fadeMesh.triangles = fadeTriangles.ToArray();
                 fadeMesh.uv = fadeUVs.ToArray();
+                fadeMesh.colors = fadeColors.ToArray();
                 fadeMesh.RecalculateNormals();
                 fadeChunkObject.SetActive(fadeVertices.Count != 0);
 
