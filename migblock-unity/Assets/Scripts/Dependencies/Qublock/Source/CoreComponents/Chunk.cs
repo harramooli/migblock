@@ -238,5 +238,17 @@ namespace Qublock.Core {
                 return World.data[position.x + x, position.y + y, position.z + z] == id;
             }
         }
+
+        public bool IsExtendable (int x, int y, int z) {
+
+            if (x >= 0 && x < 32 && y >= 0 && y < 32 && z >= 0 && z < 32) {
+
+                return Argosy.Get(this[x, y, z]).Extendable;
+
+            } else {
+
+                return Argosy.Get(World.data[position.x + x, position.y + y, position.z + z]).Extendable;
+            }
+        }
     }
 }
