@@ -70,6 +70,23 @@ public static class Command {
 
             break; }
 
+            case "sd": { //short hand for start default, makes dev so much faster
+
+                GameRuntimeValues.sessionInformation = new MinecraftSessionInformation{
+
+                    serverAddress = "localhost",
+                    serverPort = 25565,
+                    serverVersion = "1.12.2",
+
+                    username = "steve",
+                };
+
+                console.Logf("<color=cyan>starting Game</color>...");
+
+                UnityEngine.SceneManagement.SceneManager.LoadScene("Game");
+
+            break; }
+
             // case "stop": {
             //
             //     MinecraftInterfaceLayer.Stop();
