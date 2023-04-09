@@ -22,6 +22,11 @@ public static partial class BaseMeshing {
             chunk.visuUVs.Add(new Vector2(tileSize * uvSet.PX_X + tileSize, tileSize * uvSet.PX_Y + tileSize));
             chunk.visuUVs.Add(new Vector2(tileSize * uvSet.PX_X, tileSize * uvSet.PX_Y + tileSize));
             chunk.visuUVs.Add(new Vector2(tileSize * uvSet.PX_X, tileSize * uvSet.PX_Y));
+
+                chunk.visuColors.Add(new Color(0.8f, 0.8f, 0.8f));
+                chunk.visuColors.Add(new Color(0.8f, 0.8f, 0.8f));
+                chunk.visuColors.Add(new Color(0.8f, 0.8f, 0.8f));
+                chunk.visuColors.Add(new Color(0.8f, 0.8f, 0.8f));
         // }
         // if (!chunk.IsSolid(x - 1, y, z)) {
             chunk.visuVertices.Add(new Vector3(x - 0.4375f, y - 0.5f, z + 0.5f));
@@ -38,6 +43,11 @@ public static partial class BaseMeshing {
             chunk.visuUVs.Add(new Vector2(tileSize * uvSet.NX_X + tileSize, tileSize * uvSet.NX_Y + tileSize));
             chunk.visuUVs.Add(new Vector2(tileSize * uvSet.NX_X, tileSize * uvSet.NX_Y + tileSize));
             chunk.visuUVs.Add(new Vector2(tileSize * uvSet.NX_X, tileSize * uvSet.NX_Y));
+
+                chunk.visuColors.Add(new Color(0.8f, 0.8f, 0.8f));
+                chunk.visuColors.Add(new Color(0.8f, 0.8f, 0.8f));
+                chunk.visuColors.Add(new Color(0.8f, 0.8f, 0.8f));
+                chunk.visuColors.Add(new Color(0.8f, 0.8f, 0.8f));
         // }
         if (!chunk.IsSolid(x, y + 1, z)) {
             chunk.visuVertices.Add(new Vector3(x - 0.5f, y + 0.5f, z + 0.5f));
@@ -54,6 +64,11 @@ public static partial class BaseMeshing {
             chunk.visuUVs.Add(new Vector2(tileSize * uvSet.PY_X + tileSize, tileSize * uvSet.PY_Y + tileSize));
             chunk.visuUVs.Add(new Vector2(tileSize * uvSet.PY_X, tileSize * uvSet.PY_Y + tileSize));
             chunk.visuUVs.Add(new Vector2(tileSize * uvSet.PY_X, tileSize * uvSet.PY_Y));
+
+                chunk.visuColors.Add(new Color(1.0f, 1.0f, 1.0f));
+                chunk.visuColors.Add(new Color(1.0f, 1.0f, 1.0f));
+                chunk.visuColors.Add(new Color(1.0f, 1.0f, 1.0f));
+                chunk.visuColors.Add(new Color(1.0f, 1.0f, 1.0f));
         }
         if (!chunk.IsSolid(x, y - 1, z)) {
             chunk.visuVertices.Add(new Vector3(x - 0.5f, y - 0.5f, z - 0.5f));
@@ -70,6 +85,11 @@ public static partial class BaseMeshing {
             chunk.visuUVs.Add(new Vector2(tileSize * uvSet.NY_X + tileSize, tileSize * uvSet.NY_Y + tileSize));
             chunk.visuUVs.Add(new Vector2(tileSize * uvSet.NY_X, tileSize * uvSet.NY_Y + tileSize));
             chunk.visuUVs.Add(new Vector2(tileSize * uvSet.NY_X, tileSize * uvSet.NY_Y));
+
+                chunk.visuColors.Add(new Color(0.4f, 0.4f, 0.4f));
+                chunk.visuColors.Add(new Color(0.4f, 0.4f, 0.4f));
+                chunk.visuColors.Add(new Color(0.4f, 0.4f, 0.4f));
+                chunk.visuColors.Add(new Color(0.4f, 0.4f, 0.4f));
         }
         // if (!chunk.IsSolid(x, y, z + 1)) {
             chunk.visuVertices.Add(new Vector3(x + 0.5f, y - 0.5f, z + 0.4375f));
@@ -86,6 +106,11 @@ public static partial class BaseMeshing {
             chunk.visuUVs.Add(new Vector2(tileSize * uvSet.PZ_X + tileSize, tileSize * uvSet.PZ_Y + tileSize));
             chunk.visuUVs.Add(new Vector2(tileSize * uvSet.PZ_X, tileSize * uvSet.PZ_Y + tileSize));
             chunk.visuUVs.Add(new Vector2(tileSize * uvSet.PZ_X, tileSize * uvSet.PZ_Y));
+
+                chunk.visuColors.Add(new Color(0.6f, 0.6f, 0.6f));
+                chunk.visuColors.Add(new Color(0.6f, 0.6f, 0.6f));
+                chunk.visuColors.Add(new Color(0.6f, 0.6f, 0.6f));
+                chunk.visuColors.Add(new Color(0.6f, 0.6f, 0.6f));
         // }
         // if (!chunk.IsSolid(x, y, z - 1)) {
             chunk.visuVertices.Add(new Vector3(x - 0.5f, y - 0.5f, z - 0.4375f));
@@ -102,6 +127,11 @@ public static partial class BaseMeshing {
             chunk.visuUVs.Add(new Vector2(tileSize * uvSet.NZ_X + tileSize, tileSize * uvSet.NZ_Y + tileSize));
             chunk.visuUVs.Add(new Vector2(tileSize * uvSet.NZ_X, tileSize * uvSet.NZ_Y + tileSize));
             chunk.visuUVs.Add(new Vector2(tileSize * uvSet.NZ_X, tileSize * uvSet.NZ_Y));
+
+                chunk.visuColors.Add(new Color(0.6f, 0.6f, 0.6f));
+                chunk.visuColors.Add(new Color(0.6f, 0.6f, 0.6f));
+                chunk.visuColors.Add(new Color(0.6f, 0.6f, 0.6f));
+                chunk.visuColors.Add(new Color(0.6f, 0.6f, 0.6f));
         // }
     }
 }
