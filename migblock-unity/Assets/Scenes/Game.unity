@@ -180,7 +180,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chunkMaterial_Standard: {fileID: 2100000, guid: c7789780cf9d89a7a940663ddcb4fd82, type: 2}
-  chunkMaterial_Fade: {fileID: 2100000, guid: c7789780cf9d89a7a940663ddcb4fd82, type: 2}
+  chunkMaterial_Fade: {fileID: 2100000, guid: 44741743fb362bd31a2db9d50744f587, type: 2}
   chunkMaterial_Particle: {fileID: 2100000, guid: c7789780cf9d89a7a940663ddcb4fd82, type: 2}
 --- !u!1 &375548627
 GameObject:

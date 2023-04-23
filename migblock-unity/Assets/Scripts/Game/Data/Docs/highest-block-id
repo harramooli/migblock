@@ -1,0 +1,5 @@
+
+contains info for the highest block id so when adding a block
+we know what id we can use next
+
+----------------current highest: 18

@@ -18,10 +18,10 @@ public static partial class BaseMeshing {
             chunk.fadeUVs.Add(new Vector2(tileSize * uvSet.PX_X, tileSize * uvSet.PX_Y + tileSize));
             chunk.fadeUVs.Add(new Vector2(tileSize * uvSet.PX_X, tileSize * uvSet.PX_Y));
 
-                chunk.visuColors.Add(new Color(0.8f, 0.8f, 0.8f));
-                chunk.visuColors.Add(new Color(0.8f, 0.8f, 0.8f));
-                chunk.visuColors.Add(new Color(0.8f, 0.8f, 0.8f));
-                chunk.visuColors.Add(new Color(0.8f, 0.8f, 0.8f));
+                chunk.fadeColors.Add(new Color(0.8f, 0.8f, 0.8f));
+                chunk.fadeColors.Add(new Color(0.8f, 0.8f, 0.8f));
+                chunk.fadeColors.Add(new Color(0.8f, 0.8f, 0.8f));
+                chunk.fadeColors.Add(new Color(0.8f, 0.8f, 0.8f));
         }
         if (!chunk.IsId(x - 1, y, z, waterID) && !chunk.IsSolid(x - 1, y, z)) {
             chunk.fadeVertices.Add(new Vector3(x - 0.5f, y - 0.5f, z + 0.5f));
@@ -34,10 +34,10 @@ public static partial class BaseMeshing {
             chunk.fadeUVs.Add(new Vector2(tileSize * uvSet.NX_X, tileSize * uvSet.NX_Y + tileSize));
             chunk.fadeUVs.Add(new Vector2(tileSize * uvSet.NX_X, tileSize * uvSet.NX_Y));
 
-                chunk.visuColors.Add(new Color(0.8f, 0.8f, 0.8f));
-                chunk.visuColors.Add(new Color(0.8f, 0.8f, 0.8f));
-                chunk.visuColors.Add(new Color(0.8f, 0.8f, 0.8f));
-                chunk.visuColors.Add(new Color(0.8f, 0.8f, 0.8f));
+                chunk.fadeColors.Add(new Color(0.8f, 0.8f, 0.8f));
+                chunk.fadeColors.Add(new Color(0.8f, 0.8f, 0.8f));
+                chunk.fadeColors.Add(new Color(0.8f, 0.8f, 0.8f));
+                chunk.fadeColors.Add(new Color(0.8f, 0.8f, 0.8f));
         }
         if (!chunk.IsId(x, y + 1, z, waterID)) {
             chunk.fadeVertices.Add(new Vector3(x - 0.5f, y + size, z + 0.5f));
@@ -59,15 +59,15 @@ public static partial class BaseMeshing {
                 chunk.fadeUVs.Add(new Vector2(tileSize * uvSet.NY_X, tileSize * uvSet.NY_Y + tileSize));
                 chunk.fadeUVs.Add(new Vector2(tileSize * uvSet.NY_X, tileSize * uvSet.NY_Y));
 
-                    chunk.visuColors.Add(new Color(1.0f, 1.0f, 1.0f));
-                    chunk.visuColors.Add(new Color(1.0f, 1.0f, 1.0f));
-                    chunk.visuColors.Add(new Color(1.0f, 1.0f, 1.0f));
-                    chunk.visuColors.Add(new Color(1.0f, 1.0f, 1.0f));
+                    chunk.fadeColors.Add(new Color(1.0f, 1.0f, 1.0f));
+                    chunk.fadeColors.Add(new Color(1.0f, 1.0f, 1.0f));
+                    chunk.fadeColors.Add(new Color(1.0f, 1.0f, 1.0f));
+                    chunk.fadeColors.Add(new Color(1.0f, 1.0f, 1.0f));
 
-                        chunk.visuColors.Add(new Color(1.0f, 1.0f, 1.0f));
-                        chunk.visuColors.Add(new Color(1.0f, 1.0f, 1.0f));
-                        chunk.visuColors.Add(new Color(1.0f, 1.0f, 1.0f));
-                        chunk.visuColors.Add(new Color(1.0f, 1.0f, 1.0f));
+                        chunk.fadeColors.Add(new Color(1.0f, 1.0f, 1.0f));
+                        chunk.fadeColors.Add(new Color(1.0f, 1.0f, 1.0f));
+                        chunk.fadeColors.Add(new Color(1.0f, 1.0f, 1.0f));
+                        chunk.fadeColors.Add(new Color(1.0f, 1.0f, 1.0f));
         }
         if (!chunk.IsId(x, y - 1, z, waterID) && !chunk.IsSolid(x, y - 1, z)) {
             chunk.fadeVertices.Add(new Vector3(x - 0.5f, y - 0.5f, z - 0.5f));
@@ -80,10 +80,10 @@ public static partial class BaseMeshing {
             chunk.fadeUVs.Add(new Vector2(tileSize * uvSet.NY_X, tileSize * uvSet.NY_Y + tileSize));
             chunk.fadeUVs.Add(new Vector2(tileSize * uvSet.NY_X, tileSize * uvSet.NY_Y));
 
-                chunk.visuColors.Add(new Color(0.4f, 0.4f, 0.4f));
-                chunk.visuColors.Add(new Color(0.4f, 0.4f, 0.4f));
-                chunk.visuColors.Add(new Color(0.4f, 0.4f, 0.4f));
-                chunk.visuColors.Add(new Color(0.4f, 0.4f, 0.4f));
+                chunk.fadeColors.Add(new Color(0.4f, 0.4f, 0.4f));
+                chunk.fadeColors.Add(new Color(0.4f, 0.4f, 0.4f));
+                chunk.fadeColors.Add(new Color(0.4f, 0.4f, 0.4f));
+                chunk.fadeColors.Add(new Color(0.4f, 0.4f, 0.4f));
         }
         if (!chunk.IsId(x, y, z + 1, waterID) && !chunk.IsSolid(x, y, z + 1)) {
             chunk.fadeVertices.Add(new Vector3(x + 0.5f, y - 0.5f, z + 0.5f));
@@ -96,10 +96,10 @@ public static partial class BaseMeshing {
             chunk.fadeUVs.Add(new Vector2(tileSize * uvSet.PZ_X, tileSize * uvSet.PZ_Y + tileSize));
             chunk.fadeUVs.Add(new Vector2(tileSize * uvSet.PZ_X, tileSize * uvSet.PZ_Y));
 
-                chunk.visuColors.Add(new Color(0.6f, 0.6f, 0.6f));
-                chunk.visuColors.Add(new Color(0.6f, 0.6f, 0.6f));
-                chunk.visuColors.Add(new Color(0.6f, 0.6f, 0.6f));
-                chunk.visuColors.Add(new Color(0.6f, 0.6f, 0.6f));
+                chunk.fadeColors.Add(new Color(0.6f, 0.6f, 0.6f));
+                chunk.fadeColors.Add(new Color(0.6f, 0.6f, 0.6f));
+                chunk.fadeColors.Add(new Color(0.6f, 0.6f, 0.6f));
+                chunk.fadeColors.Add(new Color(0.6f, 0.6f, 0.6f));
         }
         if (!chunk.IsId(x, y, z - 1, waterID) && !chunk.IsSolid(x, y, z - 1)) {
             chunk.fadeVertices.Add(new Vector3(x - 0.5f, y - 0.5f, z - 0.5f));
@@ -112,10 +112,10 @@ public static partial class BaseMeshing {
             chunk.fadeUVs.Add(new Vector2(tileSize * uvSet.NZ_X, tileSize * uvSet.NZ_Y + tileSize));
             chunk.fadeUVs.Add(new Vector2(tileSize * uvSet.NZ_X, tileSize * uvSet.NZ_Y));
 
-                chunk.visuColors.Add(new Color(0.6f, 0.6f, 0.6f));
-                chunk.visuColors.Add(new Color(0.6f, 0.6f, 0.6f));
-                chunk.visuColors.Add(new Color(0.6f, 0.6f, 0.6f));
-                chunk.visuColors.Add(new Color(0.6f, 0.6f, 0.6f));
+                chunk.fadeColors.Add(new Color(0.6f, 0.6f, 0.6f));
+                chunk.fadeColors.Add(new Color(0.6f, 0.6f, 0.6f));
+                chunk.fadeColors.Add(new Color(0.6f, 0.6f, 0.6f));
+                chunk.fadeColors.Add(new Color(0.6f, 0.6f, 0.6f));
         }
     }
 }

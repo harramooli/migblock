@@ -41,11 +41,15 @@ bot.on('chunkColumnLoad', (point) => {
     for (let i = 0; i < 4; ++i)
         for (let x = 0; x < 16; ++x)
             for (let y = i * 64; y < (i + 1) * 64; ++y)
-            // for (let y = 0; y < 64; ++y)
                 for (let z = 0; z < 16; ++z)
-                    blockData.push(chunk.getBlockType(new Vec3(x, y, z)));
+                    blockData.push(
+                        blockTable.anvilIdToQublockId(
+                                chunk.getBlockType(new Vec3(x, y, z)),
+                                chunk.getBlockData(new Vec3(x, y, z))
+                        )
+                    );
 
-    blockData = blockTable.anvilToQublock(blockData);
+    // blockData = blockTable.anvilToQublock(blockData);
     blockData = runLengthEncoding.encode(blockData);
 
     process.stderr.write(`chunkLoad\n${point.x}\n${point.z}\n${blockData.toString()}\n`);
@@ -62,7 +66,7 @@ bot.on('blockUpdate', (oldBlock, newBlock) => {
     packet += `${newBlock.position.x}\n`;
     packet += `${newBlock.position.y}\n`;
     packet += `${newBlock.position.z}\n`;
-    packet += `${blockTable.anvilIdToQublockId(newBlock.type)}\n`;
+    packet += `${blockTable.anvilIdToQublockId(newBlock.type, newBlock.metadata)}\n`;
 
     process.stdout.write(packet);
 });

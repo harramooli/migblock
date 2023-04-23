@@ -23,23 +23,23 @@ public class BlockData {
     public virtual bool Extendable => true;
 
     public virtual MeshUVSet UVSet => new MeshUVSet {
-        PX_X = 0,
-        PX_Y = 0,
+        PX_X = 1,
+        PX_Y = 3,
 
-        NX_X = 0,
-        NX_Y = 0,
+        NX_X = 1,
+        NX_Y = 3,
 
-        PY_X = 0,
-        PY_Y = 0,
+        PY_X = 1,
+        PY_Y = 3,
 
-        NY_X = 0,
-        NY_Y = 0,
+        NY_X = 1,
+        NY_Y = 3,
 
-        PZ_X = 0,
-        PZ_Y = 0,
+        PZ_X = 1,
+        PZ_Y = 3,
 
-        NZ_X = 0,
-        NZ_Y = 0,
+        NZ_X = 1,
+        NZ_Y = 3,
     };
 
     public virtual void Draw (Chunk chunk, int x, int y, int z) {
